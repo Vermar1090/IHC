@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Evaluación de Usabilidad desde la IHC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .slide-2, .slide-3, .slide-4, .slide-5, .slide-6, .slide-7, .slide-8 {
+            background: white;
+            color: #333;
+        }
+        
+        .slide-9 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+        
+        .slide-1 h2 {
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #764ba2;
+        }
+        
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 900px;
+        }
+        
+        .method-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 20px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 800px;
+        }
+        
+        .tool-item {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            margin: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .university-info {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .team-info {
+            margin-top: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .qualitative { color: #ff6b6b; }
+        .quantitative { color: #4ecdc4; }
+        .analysis { color: #45b7d1; }
+        
+        .method-type {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .type-qual { background: #ff6b6b; color: white; }
+        .type-quant { background: #4ecdc4; color: white; }
+        .type-analysis { background: #45b7d1; color: white; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Portada -->
+    <div class="slide slide-1 active">
+        <div class="university-info">
+            <strong>UNAD - Universidad Nacional Abierta y a Distancia</strong><br>
+            Vicerrectoría Académica y de Investigación
+        </div>
+        <h1>📱 MÉTODOS DE EVALUACIÓN DE USABILIDAD</h1>
+        <h2>Desde la Interacción Humano Computador (IHC)</h2>
+        <div class="team-info">
+            <p><strong>Curso:</strong> Interacción Humano Computador - Código: 202016916</p>
+            <p><strong>Tarea 4:</strong> Evaluación de usabilidad desde la IHC</p>
+            <p><strong>Presentado por:</strong>Juan Diego Vergara Martinez</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introducción -->
+    <div class="slide slide-2">
+        <h2>🎯 ¿Qué evaluaremos?</h2>
+        <div class="method-card">
+            <h3>Objetivo de la presentación</h3>
+            <p>Explorar los métodos cualitativos, cuantitativos y de análisis de datos que se utilizan para evaluar la usabilidad de interfaces y sistemas interactivos desde la perspectiva de la IHC.</p>
+        </div>
+        <div style="display: flex; justify-content: space-around; margin-top: 40px; flex-wrap: wrap;">
+            <div style="text-align: center; margin: 20px;">
+                <div class="icon qualitative">🎭</div>
+                <h3>Métodos Cualitativos</h3>
+            </div>
+            <div style="text-align: center; margin: 20px;">
+                <div class="icon quantitative">📊</div>
+                <h3>Métodos Cuantitativos</h3>
+            </div>
+            <div style="text-align: center; margin: 20px;">
+                <div class="icon analysis">🔍</div>
+                <h3>Análisis de Datos</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Métodos Cualitativos Intro -->
+    <div class="slide slide-3">
+        <h2>🎭 MÉTODOS CUALITATIVOS</h2>
+        <div class="method-card">
+            <h3>¿Qué son?</h3>
+            <p>Los métodos cualitativos se enfocan en comprender el <strong>"por qué"</strong> y <strong>"cómo"</strong> los usuarios interactúan con los sistemas. Proporcionan insights profundos sobre comportamientos, motivaciones y experiencias del usuario.</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <div class="icon">💬</div>
+                <h3>Entrevistas en Profundidad</h3>
+            </div>
+            <div style="text-align: center;">
+                <div class="icon">👁️</div>
+                <h3>Observación Etnográfica</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Entrevistas en Profundidad -->
+    <div class="slide slide-4">
+        <div class="method-type type-qual">MÉTODO CUALITATIVO</div>
+        <h2>💬 Entrevistas en Profundidad</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Técnica de investigación que permite obtener información detallada sobre la experiencia del usuario mediante conversaciones estructuradas o semi-estructuradas. Proporciona insights profundos sobre motivaciones, frustraciones y comportamientos del usuario.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">📹 Zoom</div>
+            <div class="tool-item">👥 Microsoft Teams</div>
+            <div class="tool-item">📱 Google Meet</div>
+            <div class="tool-item">🎬 OBS Studio</div>
+            <div class="tool-item">🎤 Otter.ai</div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Observación Etnográfica -->
+    <div class="slide slide-5">
+        <div class="method-type type-qual">MÉTODO CUALITATIVO</div>
+        <h2>👁️ Observación Etnográfica</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Método que implica observar a los usuarios en su entorno natural mientras interactúan con el sistema, sin interferir en sus actividades normales. Permite identificar patrones de uso reales y contextuales.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">🎬 Camtasia</div>
+            <div class="tool-item">👀 Lookback</div>
+            <div class="tool-item">🔍 UserZoom</div>
+            <div class="tool-item">📊 Morae</div>
+            <div class="tool-item">🦍 Silverback</div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Métodos Cuantitativos -->
+    <div class="slide slide-6">
+        <h2>📊 MÉTODOS CUANTITATIVOS</h2>
+        <div class="method-card">
+            <h3>¿Qué son?</h3>
+            <p>Los métodos cuantitativos se enfocan en medir y cuantificar aspectos específicos de la usabilidad. Proporcionan datos numéricos y estadísticas que permiten comparaciones objetivas y medición del rendimiento.</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <div class="icon">⏱️</div>
+                <h3>Pruebas de Usabilidad Métricas</h3>
+            </div>
+            <div style="text-align: center;">
+                <div class="icon">🌡️</div>
+                <h3>Analítica Web y Heatmaps</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Pruebas de Usabilidad Métricas -->
+    <div class="slide slide-7">
+        <div class="method-type type-quant">MÉTODO CUANTITATIVO</div>
+        <h2>⏱️ Pruebas de Usabilidad Métricas</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Evaluación sistemática que mide aspectos específicos como tiempo de tarea, tasa de éxito, número de errores y eficiencia del usuario al completar tareas predefinidas en el sistema.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">🧪 UserTesting</div>
+            <div class="tool-item">🌀 Maze</div>
+            <div class="tool-item">⚡ Optimal Workshop</div>
+            <div class="tool-item">🎯 UsabilityHub</div>
+            <div class="tool-item">🔥 Hotjar</div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Analítica Web y Heatmaps -->
+    <div class="slide slide-8">
+        <div class="method-type type-quant">MÉTODO CUANTITATIVO</div>
+        <h2>🌡️ Analítica Web y Heatmaps</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Recopilación y análisis de datos sobre el comportamiento del usuario en sitios web o aplicaciones, incluyendo mapas de calor que muestran dónde hacen clic, se desplazan y pasan más tiempo los usuarios.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">📈 Google Analytics</div>
+            <div class="tool-item">🔥 Hotjar</div>
+            <div class="tool-item">🥚 Crazy Egg</div>
+            <div class="tool-item">🖱️ Mouseflow</div>
+            <div class="tool-item">📽️ FullStory</div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Métodos de Análisis de Datos -->
+    <div class="slide slide-9">
+        <h2>🔍 MÉTODOS DE ANÁLISIS DE DATOS</h2>
+        <div class="method-card">
+            <h3>¿Qué son?</h3>
+            <p>Los métodos de análisis de datos transforman la información recopilada en insights accionables. Procesan tanto datos cualitativos como cuantitativos para identificar patrones, tendencias y oportunidades de mejora.</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <div class="icon">📊</div>
+                <h3>Análisis Estadístico Descriptivo</h3>
+            </div>
+            <div style="text-align: center;">
+                <div class="icon">🏷️</div>
+                <h3>Análisis de Contenido Temático</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Análisis Estadístico -->
+    <div class="slide slide-10">
+        <div class="method-type type-analysis">ANÁLISIS DE DATOS</div>
+        <h2>📊 Análisis Estadístico Descriptivo</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Procesamiento de datos cuantitativos obtenidos de pruebas de usabilidad para identificar patrones, tendencias y métricas clave como medias, medianas, desviaciones estándar y correlaciones entre variables.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">📊 SPSS</div>
+            <div class="tool-item">📈 R Studio</div>
+            <div class="tool-item">🐍 Python (Pandas, NumPy)</div>
+            <div class="tool-item">📋 Excel</div>
+            <div class="tool-item">📊 Tableau</div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Análisis Temático -->
+    <div class="slide slide-11">
+        <div class="method-type type-analysis">ANÁLISIS DE DATOS</div>
+        <h2>🏷️ Análisis de Contenido Temático</h2>
+        <div class="method-card">
+            <h3>Descripción</h3>
+            <p>Método sistemático para identificar, analizar y reportar patrones (temas) dentro de datos cualitativos obtenidos de entrevistas, comentarios de usuarios o sesiones de observación.</p>
+        </div>
+        <h3>🛠️ Herramientas Aplicables</h3>
+        <div class="tools-grid">
+            <div class="tool-item">🔍 NVivo</div>
+            <div class="tool-item">🗺️ Atlas.ti</div>
+            <div class="tool-item">📝 MAXQDA</div>
+            <div class="tool-item">☁️ Dedoose</div>
+            <div class="tool-item">💻 Code.gs</div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Conclusiones -->
+    <div class="slide slide-12">
+        <h2>🎯 CONCLUSIONES</h2>
+        <div style="display: flex; flex-direction: column; gap: 30px; max-width: 1000px;">
+            <div class="method-card">
+                <h3>💡 Enfoque Integral</h3>
+                <p>La evaluación de usabilidad requiere combinar métodos cualitativos y cuantitativos para obtener una comprensión completa de la experiencia del usuario.</p>
+            </div>
+            <div class="method-card">
+                <h3>🔄 Complementariedad</h3>
+                <p>Los métodos cualitativos nos dicen el "por qué", los cuantitativos el "qué" y "cuánto", y el análisis de datos transforma todo en insights accionables.</p>
+            </div>
+            <div class="method-card">
+                <h3>🚀 Mejora Continua</h3>
+                <p>Estos métodos permiten identificar oportunidades de mejora y validar cambios en el diseño de sistemas interactivos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Gracias -->
+    <div class="slide slide-13">
+        <div style="text-align: center;">
+            <h1>¡GRACIAS! 🙏</h1>
+            <h2>¿Preguntas? 💭</h2>
+            <div class="team-info" style="margin-top: 60px;">
+                <p><strong>Universidad Nacional Abierta y a Distancia - UNAD</strong></p>
+                <p>Curso: Interacción Humano Computador</p>
+                <p>Tarea 4: Evaluación de usabilidad desde la IHC</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">◀ Anterior</button>
+        <button class="nav-btn" onclick="nextSlide()">Siguiente ▶</button>
+    </div>
+
+    <!-- Contador de slides -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">13</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+        
+        // Auto-presentación (opcional)
+        // setInterval(nextSlide, 10000); // Cambia cada 10 segundos
+    </script>
+</body>
+</html>
